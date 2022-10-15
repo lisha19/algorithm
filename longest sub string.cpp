@@ -1,15 +1,14 @@
-int removeElement(vector<int>& nums, int val) {
-        #include<bits/stdc++.h>
- 
-using namespace std;
- 
-for(auto it =nums.begin();it!=nums.end();it++){
-    if(*it==val){
-        nums.erase(it);
-        it--;
-    }
+
+int lengthOfLongestSubstring(string s) {
+        unordered_set<char> st;
+        int l=0,ans=0;
+        for(int r=0;r<s.size();r++){
+            while(st.find(s[r])!=st.end()){
+                st.erase(s[l]);
+                l++;
+            }
+            st.insert(s[r]);
+            ans=max(ans,r-l+1);
+        }
+        return ans;
 }
-return nums.size();
-
-
-    }
